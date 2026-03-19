@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Finance Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <h1>Finance Tracker</h1>
+
+  <!-- Аутентификация -->
+  <div id="auth" class="auth">
+    <div class="auth-card">
+      <h2>Регистрация</h2>
+      <input id="regLogin" placeholder="Логин" />
+      <input id="regPassword" type="password" placeholder="Пароль" />
+      <button id="regBtn" onclick="register()">Зарегистрироваться</button>
+      <p class="small">Уже есть аккаунт? <a href="#" onclick="showLogin()">Войти</a></p>
+    </div>
+
+    <div class="auth-card" id="loginCard" style="display:none;">
+      <h2>Вход</h2>
+      <input id="loginLogin" placeholder="Логин" />
+      <input id="loginPassword" type="password" placeholder="Пароль" />
+      <button id="loginBtn" onclick="login()">Войти</button>
+      <p class="small">Нет аккаунта? <a href="#" onclick="showRegister()">Зарегистрироваться</a></p>
+    </div>
+
+    <div id="authMessage" class="auth-message"></div>
+  </div>
+
+  <div id="app" style="display:none;">
+    <!-- Карточки -->
+    <div class="cards">
+
+    <div class="card green">
+      <h3>Баланс</h3>
+      <p id="balance">0 ₽</p>
+    </div>
+
+    <div class="card blue">
+      <h3>Доходы</h3>
+      <p id="incomeTotal">0 ₽</p>
+    </div>
+
+    <div class="card red">
+      <h3>Расходы</h3>
+      <p id="expenseTotal">0 ₽</p>
+    </div>
+
+  </div>
+
+  <!-- Формы -->
+  <div class="forms">
+
+    <!-- Доход -->
+    <div class="form">
+      <h2>➕ Доход</h2>
+
+      <input id="incomeAmount" type="number" placeholder="Сумма">
+      <input id="incomeSource" placeholder="Источник">
+      <input id="incomeComment" placeholder="Комментарий">
+
+      <button onclick="addIncome()">Добавить</button>
+    </div>
+
+    <!-- Расход -->
+    <div class="form">
+      <h2>➖ Расход</h2>
+
+      <input id="expenseAmount" type="number" placeholder="Сумма">
+      <input id="expenseCategory" placeholder="Категория">
+      <input id="expenseComment" placeholder="Комментарий">
+
+      <button onclick="addExpense()">Добавить</button>
+    </div>
+
+  </div>
+
+  <!-- История -->
+  <div class="list">
+
+    <h2>История операций</h2>
+    <ul id="history"></ul>
+
+  </div>
+
+</div>
+
+<script src="app-auth.js"></script>
+</body>
+</html>
