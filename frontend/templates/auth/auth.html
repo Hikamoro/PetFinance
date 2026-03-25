@@ -29,7 +29,7 @@
     
     // 3. Отправляем на сервер
     try {
-        const response = await fetch('http://localhost:8080/auth', {
+        const response = await fetch('/auth', {
             method: 'POST',                          // Тип запроса
             headers: {
                 'Content-Type': 'application/json',  // Говорим, что шлем JSON
