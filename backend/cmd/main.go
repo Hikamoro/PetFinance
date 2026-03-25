@@ -231,7 +231,10 @@ func main() {
 	// Статика фронтенда (отвечает на /, /index.html и т.п.)
 	//mux.Handle("/", http.FileServer(http.Dir("./frontend")))
 	log.Println("Server started on :8080")
-	log.Println(db.GetUserById(0, db.DB))
+	//log.Println(db.GetUserById(0, db.DB))
+	mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("../../frontend/pkg/static/"))))
+	// http.Handle("/static/", http.FileServer(http.Dir("../../frontend/pkg/")))
+	// http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
 	err := http.ListenAndServe(":8080", mux) // поднятие сервера
 	if err != nil {
 		log.Fatal(err)
