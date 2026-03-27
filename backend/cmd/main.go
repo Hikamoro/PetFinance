@@ -217,7 +217,7 @@ func main() {
 	// 	log.Fatal("Ошибка добавления пользователя:", err)
 	// }
 	mux := http.NewServeMux()
-	// mux.HandleFunc("/register", server.IssuesHandler)
+	// ("/register", server.IssuesHandler)
 	// //mux.HandleFunc("/login", server.IssuesHandler)
 	// mux.HandleFunc("/addIncome", server.IssuesHandler)
 	// mux.HandleFunc("/addExpens", server.IssuesHandler)

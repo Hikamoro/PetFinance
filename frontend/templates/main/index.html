@@ -2,18 +2,13 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Finance Tracker</title>
 <link rel="stylesheet" type="text/css" href="/static/css/index.css">
-<!-- <link rel="stylesheet" type="text/css" href="/static/css/null.css"> -->
-<!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"> -->
-<!-- <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
-</style> -->
 </head>
 <body>
 <script src="/static/js/index.js"></script>
-</script>
+
 <div id="transactionModal" class="modal hidden">
   <div class="modal-content">
     <h2 id="modalTitle">Добавить транзакцию</h2>
@@ -36,62 +31,60 @@
 </div>
 
 <div class="dashboard">
+  <div class="sidebar">
+    <div class="logo">{{ .Username }}</div>
+    <div class="nav">
+      <button>Dashboard</button>
+      <button>Transactions</button>
+      <button>Analytics</button>
+      <button>Settings</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </div>
 
-<div class="sidebar">
-<div>
-<div class="logo">{{ .Username }}</div>
-<div class="nav">
-<button>Dashboard</button>
-<button>Transactions</button>
-<button>Analytics</button>
-<button>Settings</button>
-<button onclick="logout()">Logout</button>
-</div>
+  <div class="main">
+    <header>
+      <h1>Finance Tracker</h1>
+      <div class="actions">
+        <button class="btn income" onclick="addTransaction('income')">+ Income</button>
+        <button class="btn expense" onclick="addTransaction('expense')">- Expense</button>
+      </div>
+    </header>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-title">Total Balance</div>
+        <div class="card-value" id="balance">$0</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Income</div>
+        <div class="card-value" id="income">$0</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Expense</div>
+        <div class="card-value" id="expense">$0</div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="chart">
+        <div class="chart-circle">
+          <div class="chart-inner">
+            Total
+            <span id="chartTotal">$0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="transactions">
+        <h3>Recent Transactions</h3>
+        <div class="transaction-list" id="transactions"></div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- <div class="user">@username</div> -->
-</div>
-
-<div class="main">
-
-<header>
-<h1>Finance Tracker</h1>
-<div class="actions">
-<button class="btn income" onclick="addTransaction('income')">+ Income</button>
-<button class="btn expense" onclick="addTransaction('expense')">- Expense</button>
-</div>
-</header>
-
-<div class="cards">
-<div class="card">
-<div class="card-title">Total Balance</div>
-<div class="card-value" id="balance">$0</div>
-</div>
-
-<div class="card">
-<div class="card-title">Income</div>
-<div class="card-value" id="income">$0</div>
-</div>
-
-<div class="card">
-<div class="card-title">Expense</div>
-<div class="card-value" id="expense">$0</div>
-</div>
-</div>
-
-<div class="content">
-
-<div class="chart">
-<div class="chart-circle">
-<div class="chart-inner">
-Total
-<span id="chartTotal">$0</span>
-</div>
-</div>
-</div>
-
-<div class="transactions">
-<h3>Recent Transactions</h3>
-<div class="transaction-list" id="transactions"></div>
 </body>
 </html>
