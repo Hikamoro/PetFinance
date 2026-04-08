@@ -36,7 +36,7 @@ func (s *Server) IssuesHandler(w http.ResponseWriter, r *http.Request) {
 	switch r.URL.Path {
 	case "/register":
 		if r.Method != http.MethodPost {
-			Tmpl, _ := template.ParseFiles("../../frontend/templates/auth/register.html")
+			Tmpl, _ := template.ParseFiles("./frontend/templates/auth/register.html")
 			Tmpl.Execute(w, nil)
 		} else {
 			var req struct {
@@ -66,7 +66,7 @@ func (s *Server) IssuesHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	case "/auth":
 		if r.Method != http.MethodPost {
-			Tmpl, _ := template.ParseFiles("../../frontend/templates/auth/auth.html")
+			Tmpl, _ := template.ParseFiles("./frontend/templates/auth/auth.html")
 			Tmpl.Execute(w, nil)
 		} else {
 			var req struct {
@@ -92,7 +92,7 @@ func (s *Server) IssuesHandler(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, "invalid login or password", http.StatusUnauthorized)
 		}
 	case "/":
-		Tmpl, _ := template.ParseFiles("../../frontend/templates/main/index.html")
+		Tmpl, _ := template.ParseFiles("./frontend/templates/main/index.html")
 		Tmpl.Execute(w, nil)
 	case "":
 		// var Req struct {
@@ -107,7 +107,7 @@ func (s *Server) IssuesHandler(w http.ResponseWriter, r *http.Request) {
 		// 	Username string
 		// }
 		// r := user{Username: name}
-		Tmpl, _ := template.ParseFiles("../../frontend/templates/main/index.html")
+		Tmpl, _ := template.ParseFiles("./frontend/templates/main/index.html")
 		Tmpl.Execute(w, nil)
 	// case "/auth":
 	// 	Tmpl, _ := template.ParseFiles("../../frontend/templates/auth/auth.html")
@@ -232,7 +232,7 @@ func main() {
 	//mux.Handle("/", http.FileServer(http.Dir("./frontend")))
 	log.Println("Server started on :8080")
 	//log.Println(db.GetUserById(0, db.DB))
-	mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("../../frontend/pkg/static/"))))
+	mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./frontend/pkg/static/"))))
 	// http.Handle("/static/", http.FileServer(http.Dir("../../frontend/pkg/")))
 	// http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
 	err := http.ListenAndServe(":8080", mux) // поднятие сервера
